@@ -10,11 +10,18 @@
   <div class="reviews">
     <% if @restaurant.reviews.any? %>
       <% @restaurant.reviews.each do |review|%>
-        <div class="d-flex justify-content-between">
-          <strong><%= review.content %></strong>
-          <div class="rating d-flex">
+        <div class="row justify-content-between align-items-center">
+          <div class="col-8 flex-grow-1">
+            <strong><%= review.content %></strong>
+          </div>
+          <div class="col-3 d-flex justify-content-end">
             <% review.rating.times do %>
               <i class="fa-solid fa-heart d-flex"></i>
+            <% end %>
+          </div>
+          <div class="col-1">
+            <%= link_to review_path(review), data: { turbo_method: :delete, turbo_confirm: "are you sure?" } do %>
+              <i class="fa-solid fa-trash"></i>
             <% end %>
           </div>
         </div>
