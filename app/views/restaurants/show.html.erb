@@ -36,7 +36,16 @@
 <div class="container shadow col-4">
   <%= simple_form_for [@restaurant, @review] do |f| %>
     <%= f.input :content %>
-    <%= f.input :rating, collection: 0..5%>
-    <%= f.submit :submit, class: "btn btn-secondary"%>
-  <% end %>
-</div>
+    <div class="star-rating">
+      <%#= f.collection_radio_buttons :rating, [[1], [2], [3], [4], [5]], :first, :last do |b| %>
+        <%#= b.radio_button%>
+        <%# end %>
+        <input type="radio" name="review[rating]" value="1" />
+        <input type="radio" name="review[rating]" value="2" />
+        <input type="radio" name="review[rating]" value="3" checked />
+        <input type="radio" name="review[rating]" value="4" />
+        <input type="radio" name="review[rating]" value="5" />
+      </div>
+      <%= f.submit :submit, class: "btn btn-secondary mt-3"%>
+    <% end %>
+  </div>
