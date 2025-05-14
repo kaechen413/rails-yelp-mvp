@@ -1,0 +1,27 @@
+<h1>Restaurant Page</h1>
+<%= render "restaurants/banner", restaurant: @restaurant %>
+<div class="container mt-3">
+  <h1><%= @restaurant.name %></h1>
+  <hr>
+  <h4><%= @restaurant.address %></h4>
+  <h5>Contack us: <%= @restaurant.phone_number %></h5>
+  <hr>
+  <h3>Reviews</h3>
+  <div class="reviews">
+    <% if @restaurant.reviews.any? %>
+      <% @restaurant.reviews.each do |review|%>
+        <div class="d-flex justify-content-between">
+          <strong><%= review.content %></strong>
+          <div class="rating d-flex">
+            <% review.rating.times do %>
+              <i class="fa-solid fa-heart d-flex"></i>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+    <p><%= link_to "leave a review", new_restaurant_review_path(@restaurant)  %></p>
+  </div>
+  <hr>
+  <p><%= link_to "Back", restaurants_path %></p>
+</div>

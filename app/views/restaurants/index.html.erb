@@ -1,0 +1,15 @@
+<div class="container d-flex justify-content-between align-items-center">
+  <h1>Restaurants</h1>
+  <%= link_to new_restaurant_path do %>
+    <i class="fa-solid fa-plus"></i>
+  <% end %>
+</div>
+<div class="cards mt-3">
+  <% @restaurants.each do |restaurant| %>
+    <%= link_to restaurant_path(restaurant) do  %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+        <%=  restaurant.name%>
+      </div>
+    <% end %>
+  <% end %>
+</div>
